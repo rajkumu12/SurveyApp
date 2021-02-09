@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginHorizontal="@dimen/dp12"
+    android:layout_marginTop="@dimen/sp16"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/sp16"
+    android:paddingTop="@dimen/dp8"
+    android:background="@drawable/dailyreportbg">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp8"
+        android:src="@drawable/black_point"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp12"
+        android:layout_marginLeft="@dimen/dp18"
+        android:fontFamily="@font/quicksand_medium"
+        android:textColor="@color/black"
+        android:text="Lorem Ipsum is simply dummy text of the printing and ? typesetting industry. "/>
+
+
+</LinearLayout>

@@ -18,8 +18,8 @@ import com.survey.surveyapp.FullDrawerLayout;
 
 public class HomeActivity extends AppCompatActivity  implements View.OnClickListener{
     FullDrawerLayout drawerLayout;
-    ImageView imageView_hamburgericon,close_drawer;
-    TextView tv_daily_report_nav;
+    ImageView imageView_hamburgericon,close_drawer,img_profile;
+    TextView tv_daily_report_nav,tv_notifications_nav;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +30,8 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
         imageView_hamburgericon = findViewById(R.id.hamburger);
         close_drawer =findViewById(R.id.close_drawer);
         tv_daily_report_nav =findViewById(R.id.tv_daily_rep_nav);
+        tv_notifications_nav =findViewById(R.id.tv_notifications);
+        img_profile =findViewById(R.id.img_profile);
 
 
         imageView_hamburgericon.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +46,8 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
 
         close_drawer.setOnClickListener(this);
         tv_daily_report_nav.setOnClickListener(this);
+        tv_notifications_nav.setOnClickListener(this);
+        img_profile.setOnClickListener(this);
 
         loadFragment(new HomeFragments());
     }
@@ -69,6 +73,10 @@ public class HomeActivity extends AppCompatActivity  implements View.OnClickList
             else drawerLayout.closeDrawer(Gravity.START);
         }else if (id==R.id.tv_daily_rep_nav){
             startActivity(new Intent(HomeActivity.this,ReportActivity.class));
+        }else if (id==R.id.tv_notifications){
+            startActivity(new Intent(HomeActivity.this,Notifications.class));
+        }else if (id==R.id.img_profile){
+            startActivity(new Intent(HomeActivity.this,ProfileActivity.class));
         }
     }
 }

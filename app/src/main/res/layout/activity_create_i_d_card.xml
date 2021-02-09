@@ -12,16 +12,12 @@
     android:layout_height="match_parent"
     android:background="@drawable/loginbg"
     tools:context=".Ui.Activity.CreateIDCardActivity">
-
-
-
     <RelativeLayout
         android:id="@+id/rly_topactionbar1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="24dp">
-
         <ImageView
             android:id="@+id/back"
             android:layout_width="21dp"
@@ -50,11 +46,7 @@
                 android:fontFamily="@font/quicksand_medium"
                 android:text="Mon 21, 2021"/>
         </LinearLayout>
-
-
     </RelativeLayout>
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -136,7 +128,7 @@
                     android:singleLine="true"
                     android:paddingHorizontal="@dimen/dp4"
                     android:textColorHint="#80000000"
-                    android:hint="                                          @gmail.com"
+                    android:hint="              @gmail.com"
                     android:fontFamily="@font/quicksand_book"
                     android:inputType="textEmailAddress"
                     android:layout_weight="0.5"/>
@@ -230,23 +222,30 @@
                 android:layout_height="@dimen/dp38"
                 android:layout_marginTop="@dimen/dp8"
                 android:weightSum="1">
-                <Spinner
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="0.5"
-                    android:layout_height="@dimen/dp36"
                     android:background="@drawable/et_bg"
-                    android:spinnerMode="dropdown"
-                    android:entries="@array/Months"
-                    android:dropDownSelector="@drawable/dropdown"
-                    />
+                    android:layout_height="@dimen/dp36">
+
+                    <Spinner
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_margin="@dimen/dp1"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/dropdown_icon"
+                        android:spinnerMode="dropdown"
+                        android:entries="@array/Months"
+                        />
+                </LinearLayout>
+
                 <EditText
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/et_bg"
                     android:textColor="@color/textcolor"
                     android:singleLine="true"
-                    android:hint="Day"
-
+                    android:hint="@string/day"
                     android:paddingLeft="@dimen/dp2"
                     android:layout_marginLeft="@dimen/dp8"
                     android:textColorHint="#80000000"
@@ -297,14 +296,22 @@
                         android:textColor="@color/black"
                         android:fontFamily="@font/quicksand_bold"/>
 
-                    <Spinner
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp36"
+                        android:layout_height="@dimen/dp38"
                         android:background="@drawable/et_bg"
-                        android:spinnerMode="dropdown"
-                        android:entries="@array/gender"
-                        android:dropDownSelector="@drawable/dropdown"
-                        android:layout_marginTop="@dimen/dp8"/>
+                        android:layout_marginTop="@dimen/dp8"
+                        >
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp36"
+                            android:spinnerMode="dropdown"
+                            android:layout_margin="@dimen/dp1"
+                            android:background="@drawable/dropdown_icon"
+                            android:entries="@array/gender"
+                            />
+                    </LinearLayout>
+
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -322,7 +329,7 @@
                         android:fontFamily="@font/quicksand_bold"/>
                     <EditText
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp36"
+                        android:layout_height="@dimen/dp38"
                         android:background="@drawable/et_bg"
                         android:fontFamily="@font/quicksand_book"
                         android:layout_marginTop="@dimen/dp8"
@@ -393,7 +400,7 @@
                 <EditText
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/et_bg"
+                    android:background="@null"
                     android:textColor="@color/textcolor"
                     android:singleLine="true"
                     android:textColorHint="#80000000"
@@ -464,8 +471,7 @@
 sed diam nonummy nibh euismod tincidunt ut laoreet
 dolore magna aliquam erat volutpat."/>
         </LinearLayout>
-        
-        
+
         <TextView
             android:layout_width="222dp"
             android:layout_gravity="center"
