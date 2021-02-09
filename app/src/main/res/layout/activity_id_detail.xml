@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,6 +12,9 @@
     android:background="@drawable/loginbg"
     android:orientation="vertical"
     tools:context=".Ui.Activity.IdDetailActivity">
+
+
+
 
 
     <RelativeLayout
@@ -38,6 +46,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="100dp"
         android:orientation="vertical"
+        android:paddingBottom="55dp"
         android:background="@drawable/bg_create">
 
         <ImageView
@@ -53,6 +62,7 @@
             android:layout_marginTop="@dimen/dp12">
 
             <ImageView
+                android:id="@+id/image_edit_id"
                 android:layout_width="@dimen/dp19"
                 android:layout_height="@dimen/dp19"
                 android:layout_alignParentRight="true"
@@ -60,6 +70,7 @@
                 android:layout_marginRight="@dimen/dp12"
                 android:src="@drawable/edit_pencil"/>
             <ImageView
+                android:id="@+id/image_ok_id"
                 android:layout_width="@dimen/dp22"
                 android:layout_height="@dimen/dp22"
                 android:layout_alignParentRight="true"
@@ -69,6 +80,7 @@
                 android:src="@drawable/ic_baseline_check_24"/>
 
             <TextView
+                android:id="@+id/tv_name_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -77,6 +89,7 @@
                 android:fontFamily="@font/quicksand_medium"
                 android:text="James Jordan"/>
             <EditText
+                android:id="@+id/et_name_id"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
@@ -121,6 +134,7 @@
                 android:layout_marginLeft="@dimen/dp16"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/tv_cont_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#525252"
@@ -128,6 +142,7 @@
                     android:fontFamily="@font/quicksand_book"
                     android:text="000-000-0000"/>
                 <EditText
+                    android:id="@+id/et_cont_id"
                     android:layout_width="200dp"
                     android:layout_height="@dimen/sp16"
                     android:textColor="#525252"
@@ -158,6 +173,7 @@
                 android:layout_marginLeft="@dimen/dp16"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/tv_add_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#525252"
@@ -165,6 +181,7 @@
                     android:fontFamily="@font/quicksand_book"
                     android:text="Chandigarh"/>
                 <EditText
+                    android:id="@+id/et_add_id"
                     android:layout_width="200dp"
                     android:layout_height="@dimen/sp16"
                     android:textColor="#525252"
@@ -195,6 +212,7 @@
                 android:layout_marginLeft="@dimen/dp16"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/tv_desig_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#525252"
@@ -202,6 +220,7 @@
                     android:fontFamily="@font/quicksand_book"
                     android:text="10th"/>
                 <EditText
+                    android:id="@+id/et_desig_id"
                     android:layout_width="200dp"
                     android:layout_height="@dimen/sp16"
                     android:textColor="#525252"
@@ -232,6 +251,7 @@
                 android:layout_marginLeft="@dimen/dp16"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/tv_email_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#525252"
@@ -239,6 +259,7 @@
                     android:fontFamily="@font/quicksand_book"
                     android:text="Jonson13@gmail.com"/>
                 <EditText
+                    android:id="@+id/et_email_id"
                     android:layout_width="200dp"
                     android:layout_height="@dimen/sp16"
                     android:textColor="#525252"
@@ -269,6 +290,7 @@
                 android:layout_marginLeft="@dimen/dp16"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/tv_gender_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#525252"
@@ -276,6 +298,7 @@
                     android:fontFamily="@font/quicksand_book"
                     android:text="Male"/>
                 <EditText
+                    android:id="@+id/et_gender_id"
                     android:layout_width="200dp"
                     android:layout_height="@dimen/sp16"
                     android:textColor="#525252"
@@ -290,3 +313,4 @@
 
 
 </LinearLayout>
+</ScrollView>
