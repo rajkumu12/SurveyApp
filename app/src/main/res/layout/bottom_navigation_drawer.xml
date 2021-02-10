@@ -60,6 +60,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_home_nav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/img_profile"
@@ -81,10 +82,11 @@
                 android:layout_marginTop="@dimen/dp24"
                 android:fontFamily="@font/quicksand_bold"
                 android:text="Work Report"
-                android:textColor="#FFFFFF"
+                android:textColor="#80FFFFFF"
                 android:textSize="@dimen/sp20" />
 
             <TextView
+                android:id="@+id/tv_survey_nav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/img_profile"
@@ -97,7 +99,7 @@
                 android:textSize="@dimen/sp20" />
 
             <TextView
-                android:id="@+id/tv_notifications"
+                android:id="@+id/tv_notifications_nav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/img_profile"
@@ -110,6 +112,7 @@
                 android:textSize="@dimen/sp20" />
 
             <TextView
+                android:id="@+id/tv_setting_nav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/img_profile"
