@@ -77,6 +77,7 @@
                 android:weightSum="1">
 
                 <EditText
+                    android:id="@+id/et_name1"
                     android:layout_width="0dp"
                     android:paddingLeft="@dimen/dp4"
                     android:layout_height="match_parent"
@@ -87,6 +88,7 @@
                     android:inputType="textPersonName|textCapWords"
                     android:layout_weight="0.5"/>
                 <EditText
+                    android:id="@+id/et_name2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/et_bg"
@@ -121,6 +123,7 @@
                 android:weightSum="1">
 
                 <EditText
+                    android:id="@+id/et_email_user"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/et_bg"
@@ -128,7 +131,7 @@
                     android:singleLine="true"
                     android:paddingHorizontal="@dimen/dp4"
                     android:textColorHint="#80000000"
-                    android:hint="              @gmail.com"
+                    android:hint="aplha@gmail.com"
                     android:fontFamily="@font/quicksand_book"
                     android:inputType="textEmailAddress"
                     android:layout_weight="0.5"/>
@@ -157,6 +160,7 @@
                 android:weightSum="1">
 
                 <EditText
+                    android:id="@+id/et_id_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/et_bg"
@@ -190,6 +194,7 @@
                 android:weightSum="1">
 
                 <EditText
+                    android:id="@+id/et_cofirmpassword"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/et_bg"
@@ -229,6 +234,7 @@
                     android:layout_height="@dimen/dp36">
 
                     <Spinner
+                        android:id="@+id/spinner_id_month"
                         android:layout_width="0dp"
                         android:layout_weight="0.5"
                         android:layout_margin="@dimen/dp1"
@@ -246,6 +252,7 @@
                     android:textColor="@color/textcolor"
                     android:singleLine="true"
                     android:hint="@string/day"
+                    android:id="@+id/et_day"
                     android:paddingLeft="@dimen/dp2"
                     android:layout_marginLeft="@dimen/dp8"
                     android:textColorHint="#80000000"
@@ -260,6 +267,7 @@
                     android:textColor="@color/textcolor"
                     android:singleLine="true"
                     android:hint="Year"
+                    android:id="@+id/et_year"
                     android:paddingLeft="@dimen/dp4"
                     android:layout_marginLeft="@dimen/dp8"
                     android:textColorHint="#80000000"
@@ -302,7 +310,8 @@
                         android:background="@drawable/et_bg"
                         android:layout_marginTop="@dimen/dp8"
                         >
-                        <androidx.appcompat.widget.AppCompatSpinner
+                        <Spinner
+                            android:id="@+id/spnr_gender"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/dp36"
                             android:spinnerMode="dropdown"
@@ -328,6 +337,7 @@
                         android:textColor="@color/black"
                         android:fontFamily="@font/quicksand_bold"/>
                     <EditText
+                        android:id="@+id/et_id_mobile"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp38"
                         android:background="@drawable/et_bg"
@@ -364,6 +374,7 @@
                 android:weightSum="1">
 
                 <EditText
+                    android:id="@+id/et_id_designation"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/et_bg"
@@ -398,6 +409,7 @@
                 android:weightSum="1">
 
                 <EditText
+                    android:id="@+id/et_image_pr"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:background="@null"
@@ -408,6 +420,7 @@
                     android:inputType="text|textCapSentences"
                     android:layout_weight="0.95"/>
                 <ImageView
+                    android:id="@+id/image_id_select"
                     android:layout_width="@dimen/sp16"
                     android:layout_height="@dimen/dp12"
                     android:layout_gravity="center"
@@ -436,6 +449,7 @@
                 android:weightSum="1">
 
                 <EditText
+                    android:id="@+id/et_id_address"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/et_bg"
@@ -458,6 +472,7 @@
             android:orientation="horizontal">
 
             <CheckBox
+                android:id="@+id/ch_id_agree"
                 android:layout_width="@dimen/dp24"
                 android:layout_height="@dimen/dp24"
                 android:buttonTint="#004AB7"
@@ -473,6 +488,7 @@ dolore magna aliquam erat volutpat."/>
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_create"
             android:layout_width="222dp"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/dp24"

@@ -30,12 +30,29 @@
             android:text="Profile"/>
     </RelativeLayout>
 
-    <ImageView
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+    <RelativeLayout
+        android:layout_width="170dp"
+        android:layout_height="140dp"
+
         android:layout_marginTop="@dimen/dp30"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/pp_pic"/>
+        android:layout_gravity="center_horizontal">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_profile_p"
+            android:layout_width="130dp"
+            android:layout_centerInParent="true"
+            android:layout_height="130dp"
+            android:src="@drawable/ic_user"/>
+
+        <ImageView
+            android:id="@+id/edit_pen_pic"
+            android:layout_width="@dimen/dp36"
+            android:layout_height="@dimen/dp36"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_baseline_mode_edit_24"
+            app:tint="@color/white" />
+    </RelativeLayout>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -69,6 +86,7 @@
             android:layout_centerInParent="true"
             android:textColor="#00205B"
             android:textSize="@dimen/sp20"
+            android:visibility="visible"
             android:fontFamily="@font/quicksand_medium"
             android:text="Alexa Martin"/>
         <EditText
@@ -77,6 +95,8 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:textColor="#00205B"
+            android:textColorHint="#00205B"
+            android:text="dsfhjhfsdfhjsdhfgjsd"
             android:background="@null"
             android:inputType="textPersonName"
             android:textSize="@dimen/sp20"
@@ -154,6 +174,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="#525252"
                     android:textSize="@dimen/sp10"
+
                     android:fontFamily="@font/quicksand_book"
                     android:text="000-000-0000"/>
                 <EditText
@@ -162,6 +183,8 @@
                     android:layout_height="@dimen/sp16"
                     android:textColor="#525252"
                     android:visibility="gone"
+                    android:singleLine="true"
+                    android:imeActionLabel="actionNext"
                     android:textSize="@dimen/sp10"
                     android:background="@null"
                     android:fontFamily="@font/quicksand_book"
@@ -193,6 +216,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="#525252"
                     android:textSize="@dimen/sp10"
+
                     android:fontFamily="@font/quicksand_book"
                     android:text="Chandigarh"/>
                 <EditText
@@ -201,6 +225,8 @@
                     android:layout_height="@dimen/sp16"
                     android:textColor="#525252"
                     android:visibility="gone"
+                    android:singleLine="true"
+                    android:imeActionLabel="actionNext"
                     android:textSize="@dimen/sp10"
                     android:background="@null"
                     android:fontFamily="@font/quicksand_book"
@@ -240,6 +266,8 @@
                     android:layout_height="@dimen/sp16"
                     android:textColor="#525252"
                     android:visibility="gone"
+                    android:singleLine="true"
+                    android:imeActionLabel="actionNext"
                     android:textSize="@dimen/sp10"
                     android:background="@null"
                     android:fontFamily="@font/quicksand_book"
@@ -271,6 +299,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="#525252"
                     android:textSize="@dimen/sp10"
+
                     android:fontFamily="@font/quicksand_book"
                     android:text="Jonson13@gmail.com"/>
                 <EditText
@@ -279,6 +308,8 @@
                     android:layout_height="@dimen/sp16"
                     android:textColor="#525252"
                     android:visibility="gone"
+                    android:singleLine="true"
+                    android:imeActionLabel="actionNext"
                     android:textSize="@dimen/sp10"
                     android:background="@null"
                     android:fontFamily="@font/quicksand_book"
@@ -317,6 +348,8 @@
                     android:layout_width="200dp"
                     android:layout_height="@dimen/sp16"
                     android:textColor="#525252"
+                    android:imeActionLabel="actionNext"
+                    android:singleLine="true"
                     android:visibility="gone"
                     android:textSize="@dimen/sp10"
                     android:background="@null"
@@ -358,6 +391,7 @@
                     android:layout_height="@dimen/sp16"
                     android:textColor="#525252"
                     android:visibility="gone"
+                    android:imeOptions="actionDone"
                     android:inputType="phone"
                     android:maxLength="10"
                     android:textSize="@dimen/sp10"

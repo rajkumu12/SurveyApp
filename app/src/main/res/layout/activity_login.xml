@@ -18,8 +18,6 @@
             android:src="@drawable/login_imageicon"
             />
 
-
-
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp378"
@@ -61,6 +59,7 @@
 
 
                     <EditText
+                        android:id="@+id/et_email"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp30"
                         android:inputType="textEmailAddress"
@@ -100,6 +99,7 @@
                         android:orientation="horizontal"
                         android:layout_marginTop="@dimen/dp8">
                         <EditText
+                            android:id="@+id/et_password"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/dp30"
                             android:inputType="textPassword"
