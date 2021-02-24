@@ -37,7 +37,7 @@ public class APIClient {
 
 
 
-    public static Retrofit getClientYouTube(Context context) {
+ /*   public static Retrofit getClientYouTube(Context context) {
         Log.e(TAG, "getClient");
         Retrofit retrofit = null;
         if (retrofit == null) {
@@ -53,7 +53,7 @@ public class APIClient {
                     .build();
         }
         return retrofit;
-    }
+    }*/
 
 
     public static Retrofit getClientAddCard() {

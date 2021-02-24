@@ -26,8 +26,8 @@ public interface UserDao {
     List<Result_Push> getAll(String id);
 
 
-   @Query("UPDATE user SET fullname = :fullname , mobile = :mobile , email = :email , profile_pic = :profile_pic , about_us = :about_us , gender = :gender , city = :city , phone = :phone , token = :token WHERE uid = :tid")
- int updateLoginUser(int tid, String fullname, String mobile, String email, String profile_pic, String about_us, String gender, String city, String phone, String token);
+   @Query("UPDATE user SET fullname = :fullname , mobile = :mobile , email = :email , profile_pic = :profile_pic , about_us = :about_us , gender = :gender , city = :city , phone = :phone , designation = :designation WHERE uid = :tid")
+ int updateLoginUser(int tid, String fullname, String mobile, String email, String profile_pic, String about_us, String gender, String city, String phone, String designation);
    // LoginDataModel updateLoginUser();
 
 

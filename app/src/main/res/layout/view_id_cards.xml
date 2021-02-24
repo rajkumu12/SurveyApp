@@ -7,13 +7,13 @@
     android:id="@+id/lly_card"
     android:background="@drawable/dailyreportbg">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/image_ok"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/dp24"
-        android:src="@drawable/idcarddetal_png" />
+        android:src="@drawable/ic_user" />
 
     <LinearLayout
 
@@ -25,6 +25,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_name_idholder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand_medium"
@@ -33,6 +34,7 @@
             android:textSize="@dimen/sp16" />
 
         <TextView
+            android:id="@+id/tv_id_idholder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand_medium"
@@ -42,6 +44,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/sp10" />
         <TextView
+            android:id="@+id/tv_designation_hol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand_medium"
@@ -62,6 +65,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_dob_idholder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand_book"

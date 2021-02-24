@@ -1,7 +1,9 @@
 package com.survey.surveyapp.Netwrks;
 
 
+import com.survey.surveyapp.Models.AddIdCardModel;
 import com.survey.surveyapp.Models.BaseModel;
+import com.survey.surveyapp.Models.GetIdCardModel;
 import com.survey.surveyapp.Models.LoginModel;
 
 import java.util.ArrayList;
@@ -45,7 +47,15 @@ public interface APIInterface {
 
     @Multipart
     @POST(WSContants.ADDID)
-    Call<BaseModel> CreateId(
+    Call<AddIdCardModel> CreateId(
+            @Part ArrayList<MultipartBody.Part> arrayListMash
+    );
+
+
+    @Multipart
+    @POST(WSContants.GETID)
+    Call<GetIdCardModel> getIdCard(
+            //@Part("category_id") RequestBody category_id
             @Part ArrayList<MultipartBody.Part> arrayListMash
     );
 

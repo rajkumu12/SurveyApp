@@ -8,11 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.survey.surveyapp.Models.DailyReportModel;
+import com.survey.surveyapp.Models.GetIdCardModel;
+import com.survey.surveyapp.Models.IdCardDataModel;
 import com.survey.surveyapp.Models.ViewIdModels;
 import com.survey.surveyapp.R;
 import com.survey.surveyapp.Ui.Activity.IdDetailActivity;
@@ -20,12 +24,14 @@ import com.survey.surveyapp.Ui.Activity.ViewIdCardActivity;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public  class ViewIdAdapter extends  RecyclerView.Adapter<ViewIdAdapter.ViewHolder> {
 
     private Context context;
-    private List<ViewIdModels> arrayList;
+    private List<IdCardDataModel> arrayList;
 
-    public ViewIdAdapter(Context context, List<ViewIdModels> arrayList) {
+    public ViewIdAdapter(Context context, List<IdCardDataModel> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
     }
@@ -39,6 +45,24 @@ public  class ViewIdAdapter extends  RecyclerView.Adapter<ViewIdAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull final ViewIdAdapter.ViewHolder holder, final int position) {
+
+        IdCardDataModel idCardDataModel=arrayList.get(position);
+
+        holder.tv_name.setText(idCardDataModel.getFname()+" "+idCardDataModel.getLanme());
+        holder.tv_designation.setText("Designation- "+idCardDataModel.getDesignation());
+        holder.tv_id.setText("Id-"+idCardDataModel.getId());
+        holder.tv_dob.setText(idCardDataModel.getDob());
+
+        Glide.with(context)
+                .load(idCardDataModel.getProfile_pic())
+                .centerCrop()
+                .placeholder(R.drawable.ic_user)
+                .into(holder.id_profile);
+
+
+
+
+
 
         holder.linearLayout_card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,11 +81,18 @@ public  class ViewIdAdapter extends  RecyclerView.Adapter<ViewIdAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         RelativeLayout linearLayout_card;
+        CircleImageView id_profile;
+        TextView tv_name,tv_designation,tv_id,tv_dob;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             linearLayout_card=itemView.findViewById(R.id.lly_card);
+            id_profile=itemView.findViewById(R.id.image_ok);
+            tv_name=itemView.findViewById(R.id.tv_name_idholder);
+            tv_designation=itemView.findViewById(R.id.tv_designation_hol);
+            tv_id=itemView.findViewById(R.id.tv_id_idholder);
+            tv_dob=itemView.findViewById(R.id.tv_dob_idholder);
 
         }
     }

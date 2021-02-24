@@ -373,10 +373,10 @@ public class ProfileActivity extends BaseActivity implements LoginDelegates {
                         loginModel.getResult_push().getEmail(),
                         loginModel.getResult_push().getProfile_pic(),
                         loginModel.getResult_push().getAbout_us(),
-                        loginModel.getResult_push().getDesignation(),
+                        loginModel.getResult_push().getGender(),
                         loginModel.getResult_push().getCity(),
                         loginModel.getResult_push().getPhone(),
-                        loginModel.getResult_push().getGender()
+                        loginModel.getResult_push().getDesignation()
                 );
                 resetData();
             }

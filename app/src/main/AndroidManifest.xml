@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.survey.surveyapp">
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -30,46 +31,61 @@
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.SurveyApp">
-        <activity android:name=".Ui.Activity.IdDetailActivity"
+        android:theme="@style/Theme.SurveyApp"
+        android:usesCleartextTraffic="true">
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/filepath" />
+
+        <activity
+            android:name=".Ui.Activity.IdDetailActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize">
-        </activity>
-        <activity android:name=".Ui.Activity.ProfileActivity"
+            android:windowSoftInputMode="adjustResize"></activity>
+        <activity
+            android:name=".Ui.Activity.ProfileActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".Ui.Activity.Notifications"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Ui.Activity.Notifications"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".Ui.Activity.ViewIdCardActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Ui.Activity.ViewIdCardActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".Ui.Activity.DailyReportActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Ui.Activity.DailyReportActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".Ui.Activity.ReportActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Ui.Activity.ReportActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".Ui.Activity.CreateIDCardActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Ui.Activity.CreateIDCardActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".Ui.Activity.WorkerIdCardActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Ui.Activity.WorkerIdCardActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".Ui.Activity.HomeActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Ui.Activity.HomeActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".Ui.Activity.Login"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Ui.Activity.Login"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".SplashActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".SplashActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -78,6 +94,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepath" />
+        </provider>
     </application>
 
 </manifest>

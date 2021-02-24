@@ -11,8 +11,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +27,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.survey.surveyapp.Delegates.CreateIdDelegates;
+import com.survey.surveyapp.Models.AddIdCardModel;
 import com.survey.surveyapp.Models.BaseModel;
 import com.survey.surveyapp.Models.LoginModel;
 import com.survey.surveyapp.Models.Result_Push;
@@ -32,7 +35,11 @@ import com.survey.surveyapp.R;
 import com.survey.surveyapp.Util.ShowMsg;
 import com.survey.surveyapp.ViewModel.LoginViewModel;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 public class CreateIDCardActivity extends BaseActivity implements CreateIdDelegates {
 
@@ -42,7 +49,7 @@ public class CreateIDCardActivity extends BaseActivity implements CreateIdDelega
     CheckBox ch_agree;
     TextView tv_create;
 
-    String profilepic;
+    String profilepic="";
     private LoginViewModel viewModal;
     private static final int MY_GALLERY_PERMISSION_CODE = 101;
     public static final int MY_CAMERA_PERMISSION_CODE = 100;
@@ -127,25 +134,20 @@ public class CreateIDCardActivity extends BaseActivity implements CreateIdDelega
                     Toast.makeText(CreateIDCardActivity.this, "Enter address", Toast.LENGTH_SHORT).show();
                 } else if (!ch_agree.isChecked()) {
                     Toast.makeText(CreateIDCardActivity.this, "Accept terms & condition", Toast.LENGTH_SHORT).show();
-                } /*else if (profilepic.isEmpty()) {
+                } else if (profilepic.isEmpty()) {
                     Toast.makeText(CreateIDCardActivity.this, "Please choose profile", Toast.LENGTH_SHORT).show();
-                }*/ else {
-
+                }else {
 
                     String dob = spnrmonth.getSelectedItem().toString() + "/" + day + "/" + year;
                     String gender = spnrgender.getSelectedItem().toString().trim();
                     Result_Push user = appDatabase.userDao().getLoginUser();
 
                     viewModal.CreateId(user.getUid(), name, name2, username, password,
-                            confirm_password, dob, gender, designation, address, mobile, "");
-
+                            confirm_password, dob, gender, designation, address, mobile, profilepic.trim());
 
                 }
-
-
             }
         });
-
 
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,7 +158,7 @@ public class CreateIDCardActivity extends BaseActivity implements CreateIdDelega
     }
 
     @Override
-    public void onSucess(BaseModel loginModel) {
+    public void onSucess(AddIdCardModel loginModel) {
             if(loginModel.getSuccess().equals("true")){
                 //appDatabase.userDao().insertAll(loginModel.getDataModel());
 //            new ShowMsg().createToast(activity , loginModel.getMessage());
@@ -219,76 +221,35 @@ public class CreateIDCardActivity extends BaseActivity implements CreateIdDelega
             case MY_CAMERA_PERMISSION_CODE:
                 if (resultCode == Activity.RESULT_OK) {
 
-//                    if (data != null) {
-//                        bm = (Bitmap)data.getExtras().get("data");
-                    /*Glide.with(this).load(profilepic).placeholder(R.drawable.ic_user).into(image_profile);*/
-//                        System.out.println("Path"+data.getExtras().get("data"));
-//                        String[] projection = { MediaStore.Images.Media.DATA };
-//                        Cursor cursor = getActivity(). managedQuery(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, null, null, null);
-//                        int column_index_data = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-//                        cursor.moveToLast();
-//                        imagePath = cursor.getString(column_index_data);
-////                        File uploadFileName = new File(imagePath);
-//                        Log.e(TAG , "filefile11 "+imagePath);
-//
-                  /*  Result_Push user = appDatabase.userDao().getLoginUser();
-                    if(user != null){
-                        viewModal.updateUser(user.getUid(),
-                                "",
-                                ""+imagePath ,
-                                "" ,
-                                "" ,
-                                "" ,
-                                "" ,
-                                "",
-                                "");
-                    }*/
-                    profilepic = String.valueOf(data.getData());
+                    String[] projection = { MediaStore.Images.Media.DATA };
+                    Cursor cursor = managedQuery(
+                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                            projection, null, null, null);
+                    int column_index_data = cursor
+                            .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                    cursor.moveToLast();
+
+                    profilepic = cursor.getString(column_index_data);
                     et_profile.setText(profilepic);
+                   /* Bitmap bitmapImage = BitmapFactory.decodeFile(imagePath );
+                    imageView.setImageBitmap(bitmapImage );*/
+                    /*profilepic = String.valueOf(data.getData());*/
+
                 }
                 break;
 
 
             case MY_GALLERY_PERMISSION_CODE:
                 if (resultCode == Activity.RESULT_OK) {
-                    Bitmap bm = null;
-                    try {
-                        bm = MediaStore.Images.Media.getBitmap(this.getContentResolver(), data.getData());
-                        Uri selectedImage = data.getData();
-                        String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                        Cursor cursor = this.getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-                        cursor.moveToFirst();
-                        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                        profilepic = String.valueOf(selectedImage);
-                        cursor.close();
-//                        File uploadFileName = new File(picturePath);
-
-                        Log.e("TAG", "filefile22 " + profilepic);
-
-
-                        Result_Push user = appDatabase.userDao().getLoginUser();
-                        if (user != null) {
-                            //  viewModal.update(user.getId(), user.getFull_name());
-                            // viewModal.update(user.getMobile(), user.getToken());
-                            profilepic = String.valueOf(data.getData());
-                            et_profile.setText(profilepic);
-                            //  viewModal.update(user.getId(), user.getFull_name());
-                         /*   viewModal.updateUser(user.getUid(),
-                                    "",
-                                    ""+imagePath ,
-                                    "" ,
-                                    "" ,
-                                    "" ,
-                                    "" ,
-                                    "",
-                                    "");*/
-                        }
-
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
+                    Uri selectedImage = data.getData();
+                    String[] filePath = { MediaStore.Images.Media.DATA };
+                    Cursor c = getContentResolver().query(selectedImage,filePath, null, null, null);
+                    c.moveToFirst();
+                    int columnIndex = c.getColumnIndex(filePath[0]);
+                    profilepic = c.getString(columnIndex);
+                    et_profile.setText(profilepic);
+                    c.close();
+                    Bitmap thumbnail = (BitmapFactory.decodeFile(profilepic));
 
                 }
                 break;
