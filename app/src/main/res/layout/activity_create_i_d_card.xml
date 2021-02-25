@@ -273,7 +273,7 @@
                     android:textColorHint="#80000000"
                     android:maxLength="4"
                     android:fontFamily="@font/quicksand_book"
-                    android:inputType="textPassword"
+                    android:inputType="number"
                     android:layout_weight="0.3"/>
             </LinearLayout>
         </LinearLayout>

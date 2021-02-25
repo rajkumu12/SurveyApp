@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -45,6 +46,7 @@ public class ProfileActivity extends BaseActivity implements LoginDelegates {
 
     private LoginViewModel viewModal;
     String imagePath = "";
+    private Uri image_uri;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -253,7 +255,13 @@ public class ProfileActivity extends BaseActivity implements LoginDelegates {
                     public void onClick(DialogInterface dialog, int item) {
                         if (options[item].equals("Take Photo")) {
                             dialog.dismiss();
+                            String fileName = System.currentTimeMillis()+".jpg";
+                            ContentValues values = new ContentValues();
+                            values.put(MediaStore.Images.Media.TITLE, fileName);
+                            image_uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+
                             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            intent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
                             startActivityForResult(intent, MY_CAMERA_PERMISSION_CODE);
                         } else if (options[item].equals("Choose From Gallery")) {
                             dialog.dismiss();
@@ -283,6 +291,7 @@ public class ProfileActivity extends BaseActivity implements LoginDelegates {
 
 //                    if (data != null) {
 //                        bm = (Bitmap)data.getExtras().get("data");
+                    imagePath = getPath(image_uri);
                     Glide.with(this).load(imagePath).placeholder(R.drawable.ic_user).into(image_profile);
 //                        System.out.println("Path"+data.getExtras().get("data"));
 //                        String[] projection = { MediaStore.Images.Media.DATA };
@@ -415,6 +424,23 @@ public class ProfileActivity extends BaseActivity implements LoginDelegates {
         }
     }
 
+    private String getPath(Uri selectedImaeUri)
+    {
+        String[] projection = { MediaStore.Images.Media.DATA };
 
+        Cursor cursor = managedQuery(selectedImaeUri, projection, null, null,
+                null);
+
+        if (cursor != null)
+        {
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+
+            return cursor.getString(columnIndex);
+        }
+
+        return selectedImaeUri.getPath();
+    }
 
 }

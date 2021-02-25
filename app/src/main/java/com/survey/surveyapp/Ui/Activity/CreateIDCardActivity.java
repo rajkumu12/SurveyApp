@@ -2,10 +2,12 @@ package com.survey.surveyapp.Ui.Activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,6 +18,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -26,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.survey.surveyapp.BuildConfig;
 import com.survey.surveyapp.Delegates.CreateIdDelegates;
 import com.survey.surveyapp.Models.AddIdCardModel;
 import com.survey.surveyapp.Models.BaseModel;
@@ -35,11 +39,14 @@ import com.survey.surveyapp.R;
 import com.survey.surveyapp.Util.ShowMsg;
 import com.survey.surveyapp.ViewModel.LoginViewModel;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class CreateIDCardActivity extends BaseActivity implements CreateIdDelegates {
 
@@ -48,8 +55,8 @@ public class CreateIDCardActivity extends BaseActivity implements CreateIdDelega
     EditText et_name1, et_name2, et_username, et_password, et_confirm_password, et_day, et_year, et_mobile, et_designation, et_profile, et_address;
     CheckBox ch_agree;
     TextView tv_create;
-
-    String profilepic="";
+    Uri image_uri;
+    String profilepic = "";
     private LoginViewModel viewModal;
     private static final int MY_GALLERY_PERMISSION_CODE = 101;
     public static final int MY_CAMERA_PERMISSION_CODE = 100;
@@ -136,7 +143,7 @@ public class CreateIDCardActivity extends BaseActivity implements CreateIdDelega
                     Toast.makeText(CreateIDCardActivity.this, "Accept terms & condition", Toast.LENGTH_SHORT).show();
                 } else if (profilepic.isEmpty()) {
                     Toast.makeText(CreateIDCardActivity.this, "Please choose profile", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
 
                     String dob = spnrmonth.getSelectedItem().toString() + "/" + day + "/" + year;
                     String gender = spnrgender.getSelectedItem().toString().trim();
@@ -159,19 +166,19 @@ public class CreateIDCardActivity extends BaseActivity implements CreateIdDelega
 
     @Override
     public void onSucess(AddIdCardModel loginModel) {
-            if(loginModel.getSuccess().equals("true")){
-                //appDatabase.userDao().insertAll(loginModel.getDataModel());
+        if (loginModel.getSuccess().equals("true")) {
+            //appDatabase.userDao().insertAll(loginModel.getDataModel());
 //            new ShowMsg().createToast(activity , loginModel.getMessage());
 //            Intent intent = new Intent(getActivity() , HomeActivity.class);
 //            startActivity(intent);
 //            activity.finishAffinity();
 //            activity.finish();
-                Log.d("fldfjhldsf","qwsdeasdas");
-                new ShowMsg().createToast(this , loginModel.getMessage());
-                finish();
-            }else {
-                new ShowMsg().createDialog(this , loginModel.getMessage());
-            }
+            Log.d("fldfjhldsf", "qwsdeasdas");
+            new ShowMsg().createToast(this, loginModel.getMessage());
+            finish();
+        } else {
+            new ShowMsg().createDialog(this, loginModel.getMessage());
+        }
     }
 
     @Override
@@ -193,7 +200,19 @@ public class CreateIDCardActivity extends BaseActivity implements CreateIdDelega
                     public void onClick(DialogInterface dialog, int item) {
                         if (options[item].equals("Take Photo")) {
                             dialog.dismiss();
+                           /* Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            startActivityForResult(intent, MY_CAMERA_PERMISSION_CODE);*/
+                          /*  Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
+                            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+                            startActivityForResult(intent, 1);*/
+                            String fileName = System.currentTimeMillis()+".jpg";
+                            ContentValues values = new ContentValues();
+                            values.put(MediaStore.Images.Media.TITLE, fileName);
+                            image_uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+
                             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            intent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
                             startActivityForResult(intent, MY_CAMERA_PERMISSION_CODE);
                         } else if (options[item].equals("Choose From Gallery")) {
                             dialog.dismiss();
@@ -221,19 +240,21 @@ public class CreateIDCardActivity extends BaseActivity implements CreateIdDelega
             case MY_CAMERA_PERMISSION_CODE:
                 if (resultCode == Activity.RESULT_OK) {
 
-                    String[] projection = { MediaStore.Images.Media.DATA };
-                    Cursor cursor = managedQuery(
-                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                            projection, null, null, null);
-                    int column_index_data = cursor
-                            .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-                    cursor.moveToLast();
-
-                    profilepic = cursor.getString(column_index_data);
-                    et_profile.setText(profilepic);
+                    profilepic = getPath(image_uri);
+                   /* Bitmap bm = (Bitmap) data.getExtras().get("data");
+                    File file = new File(CommonUtills.getRealPathFromURI(this, CommonUtills.getImageUri(this, bm)));
+                    profilepic = Uri.fromFile(file).toString();
+                    et_profile.setText(profilepic);*/
                    /* Bitmap bitmapImage = BitmapFactory.decodeFile(imagePath );
                     imageView.setImageBitmap(bitmapImage );*/
                     /*profilepic = String.valueOf(data.getData());*/
+                  /*  Uri photo = data.getData();
+
+                    profilepic= String.valueOf(photo);*/
+
+                    et_profile.setText(profilepic);
+
+
 
                 }
                 break;
@@ -242,8 +263,8 @@ public class CreateIDCardActivity extends BaseActivity implements CreateIdDelega
             case MY_GALLERY_PERMISSION_CODE:
                 if (resultCode == Activity.RESULT_OK) {
                     Uri selectedImage = data.getData();
-                    String[] filePath = { MediaStore.Images.Media.DATA };
-                    Cursor c = getContentResolver().query(selectedImage,filePath, null, null, null);
+                    String[] filePath = {MediaStore.Images.Media.DATA};
+                    Cursor c = getContentResolver().query(selectedImage, filePath, null, null, null);
                     c.moveToFirst();
                     int columnIndex = c.getColumnIndex(filePath[0]);
                     profilepic = c.getString(columnIndex);
@@ -254,5 +275,44 @@ public class CreateIDCardActivity extends BaseActivity implements CreateIdDelega
                 }
                 break;
         }
+    }
+    public String BitMapToString(Bitmap userImage1) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        userImage1.compress(Bitmap.CompressFormat.PNG, 60, baos);
+        byte[] b = baos.toByteArray();
+        String Document_img1 = Base64.encodeToString(b, Base64.DEFAULT);
+        return Document_img1;
+    }
+    private String getPath(Uri selectedImaeUri)
+    {
+        String[] projection = { MediaStore.Images.Media.DATA };
+
+        Cursor cursor = managedQuery(selectedImaeUri, projection, null, null,
+                null);
+
+        if (cursor != null)
+        {
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+
+            return cursor.getString(columnIndex);
+        }
+
+        return selectedImaeUri.getPath();
+    }
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float)width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
     }
 }

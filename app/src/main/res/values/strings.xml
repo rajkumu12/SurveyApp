@@ -15,9 +15,7 @@
         <item>Other</item>
     </string-array>
 
-
     <string-array name="Months">
-        <item>Months</item>
         <item>Jan</item>
         <item>Feb</item>
         <item>Mar</item>

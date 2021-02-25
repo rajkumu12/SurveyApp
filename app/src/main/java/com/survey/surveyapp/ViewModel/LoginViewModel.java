@@ -232,7 +232,7 @@ public class LoginViewModel extends BaseViewModel{
         callidlist.enqueue(new Callback<GetIdCardModel>() {
             @Override
             public void onResponse(Call<GetIdCardModel> call, Response<GetIdCardModel> response) {
-
+                stopProgressDialog();
                 ((GetIdDelegates) cb).onSucess(response.body());
                 Log.e(TAG, "onSucessCourse token: " + response.body().getSuccess());
                 // Log.e(TAG, "responseCode token: " + response.body().getFreecourse().size());
@@ -242,7 +242,7 @@ public class LoginViewModel extends BaseViewModel{
 
             @Override
             public void onFailure(Call<GetIdCardModel> call, Throwable t) {
-
+                stopProgressDialog();
                 Log.d("jkfldsjfkldsjfklds","fjdkf"+t.getLocalizedMessage());
                 // ((HomeFreeCourseDelegate) cb).onErrorFreeCourse(t.getMessage());
                 ((GetIdDelegates) cb).onError(t.getMessage());

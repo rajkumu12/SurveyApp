@@ -48,28 +48,6 @@ public class HomeActivity extends  BaseActivity  implements View.OnClickListener
         tv_designation =findViewById(R.id.tv_designation);
 
 
-        tv_name_head.setText("Hey "+appDatabase.userDao().getLoginUser().getFullname());
-
-        Glide.with(this)
-                .load(appDatabase.userDao().getLoginUser().getProfile_pic())
-                .centerCrop()
-                .placeholder(R.drawable.ic_user)
-                .into(img_profile);
-
-
-        Log.d("hfdhsflkjdhfj","fdff"+appDatabase.userDao().getLoginUser().getProfile_pic());
-        imageView_hamburgericon.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("WrongConstant")
-            @Override
-            public void onClick(View v) {
-                if(!drawerLayout.isDrawerOpen(GravityCompat.START)) drawerLayout.openDrawer(Gravity.START);
-                else drawerLayout.closeDrawer(Gravity.START);
-            }
-        });
-
-
-        tv_name_nav.setText(appDatabase.userDao().getLoginUser().getFullname());
-        tv_designation.setText(appDatabase.userDao().getLoginUser().getDesignation());
 
 
         close_drawer.setOnClickListener(this);
@@ -109,6 +87,41 @@ public class HomeActivity extends  BaseActivity  implements View.OnClickListener
             return true;
         }
         return false;
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadData();
+    }
+
+    private void loadData() {
+
+        tv_name_head.setText("Hey "+appDatabase.userDao().getLoginUser().getFullname());
+
+        Glide.with(this)
+                .load(appDatabase.userDao().getLoginUser().getProfile_pic())
+                .centerCrop()
+                .placeholder(R.drawable.ic_user)
+                .into(img_profile);
+
+
+        Log.d("hfdhsflkjdhfj","fdff"+appDatabase.userDao().getLoginUser().getProfile_pic());
+        imageView_hamburgericon.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onClick(View v) {
+                if(!drawerLayout.isDrawerOpen(GravityCompat.START)) drawerLayout.openDrawer(Gravity.START);
+                else drawerLayout.closeDrawer(Gravity.START);
+            }
+        });
+
+
+        tv_name_nav.setText(appDatabase.userDao().getLoginUser().getFullname());
+        tv_designation.setText(appDatabase.userDao().getLoginUser().getDesignation());
+
+
     }
 
     @SuppressLint("WrongConstant")
