@@ -134,6 +134,8 @@ public class HomeActivity extends  BaseActivity  implements View.OnClickListener
         }else if (id==R.id.tv_home_nav){
             loadFragment(new HomeFragments());
             activeTab(tv_home,tv_daily_report_nav,tv_survey,tv_notifications_nav,tv_setting);
+            if(!drawerLayout.isDrawerOpen(GravityCompat.START)) drawerLayout.openDrawer(Gravity.START);
+            else drawerLayout.closeDrawer(Gravity.START);
         }else if (id==R.id.tv_daily_rep_nav){
             startActivity(new Intent(HomeActivity.this,ReportActivity.class));
             activeTab(tv_daily_report_nav,tv_home,tv_survey,tv_notifications_nav,tv_setting);

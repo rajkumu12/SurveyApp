@@ -27,10 +27,12 @@
         <ImageView
             android:id="@+id/back1_rep_iddetail"
             android:layout_width="21dp"
-            android:layout_height="16dp"
+            android:layout_height="30dp"
+
             android:layout_centerVertical="true"
             android:src="@drawable/backbtn" />
         <TextView
+            android:id="@+id/tv_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
@@ -49,12 +51,13 @@
         android:paddingBottom="55dp"
         android:background="@drawable/bg_create">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_profile"
             android:layout_width="115dp"
             android:layout_height="115dp"
             android:layout_marginTop="@dimen/dp16"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/idcarddetal_png"/>
+            android:src="@drawable/ic_user"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp42"

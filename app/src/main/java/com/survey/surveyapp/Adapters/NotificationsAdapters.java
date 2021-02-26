@@ -4,11 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.survey.surveyapp.Models.DailyReportModel;
+import com.survey.surveyapp.Models.Data;
+import com.survey.surveyapp.Models.GetNotificationsModel;
 import com.survey.surveyapp.Models.NotificationsModel;
 import com.survey.surveyapp.R;
 
@@ -17,9 +20,9 @@ import java.util.List;
 public  class NotificationsAdapters extends  RecyclerView.Adapter<NotificationsAdapters.ViewHolder> {
 
     private Context context;
-    private List<NotificationsModel> arrayList;
+    private List<Data> arrayList;
 
-    public NotificationsAdapters(Context context, List<NotificationsModel> arrayList) {
+    public NotificationsAdapters(Context context, List<Data> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
     }
@@ -33,6 +36,9 @@ public  class NotificationsAdapters extends  RecyclerView.Adapter<NotificationsA
 
     @Override
     public void onBindViewHolder(@NonNull final NotificationsAdapters.ViewHolder holder, final int position) {
+        Data data=arrayList.get(position);
+
+        holder.tv_text.setText(data.getMessage());
 
     }
 
@@ -43,10 +49,11 @@ public  class NotificationsAdapters extends  RecyclerView.Adapter<NotificationsA
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-
+            TextView tv_text;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            tv_text=itemView.findViewById(R.id.image_message_notification);
 
         }
     }

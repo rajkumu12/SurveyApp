@@ -4,7 +4,9 @@ package com.survey.surveyapp.Netwrks;
 import com.survey.surveyapp.Models.AddIdCardModel;
 import com.survey.surveyapp.Models.BaseModel;
 import com.survey.surveyapp.Models.GetIdCardModel;
+import com.survey.surveyapp.Models.GetNotificationsModel;
 import com.survey.surveyapp.Models.LoginModel;
+import com.survey.surveyapp.Models.NotificationModels;
 
 import java.util.ArrayList;
 
@@ -39,6 +41,14 @@ public interface APIInterface {
             @Part ArrayList<MultipartBody.Part> arrayListMash
     );
 
+
+    @Multipart
+    @POST(WSContants.NOTIFICATION_POST)
+    Call<NotificationModels> postNotification(
+            @Part ArrayList<MultipartBody.Part> arrayListMash
+    );
+
+
     @Multipart
     @POST(WSContants.UPDATE_USER)
     Call<LoginModel> updateUser(
@@ -58,6 +68,16 @@ public interface APIInterface {
             //@Part("category_id") RequestBody category_id
             @Part ArrayList<MultipartBody.Part> arrayListMash
     );
+
+
+
+    @Multipart
+    @POST(WSContants.GETNOTIFICATION)
+    Call<GetNotificationsModel>  getNotification(
+            //@Part("category_id") RequestBody category_id
+            @Part ArrayList<MultipartBody.Part> arrayListMash
+    );
+
 
 
   /*  @GET(WSContants.CATEGORIES)
