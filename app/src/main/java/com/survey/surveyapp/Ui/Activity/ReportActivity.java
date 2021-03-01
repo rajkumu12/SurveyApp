@@ -14,7 +14,7 @@ import com.survey.surveyapp.R;
 public class ReportActivity extends AppCompatActivity {
 
     ImageView imageView_rep_1;
-    LinearLayout lly_report;
+    LinearLayout lly_report,lly_weekly,lly_monthly,lly_yearly;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +23,9 @@ public class ReportActivity extends AppCompatActivity {
 
         imageView_rep_1=findViewById(R.id.back1_rep);
         lly_report=findViewById(R.id.lly_daily);
+        lly_weekly=findViewById(R.id.lly_weekly);
+        lly_monthly=findViewById(R.id.lly_monthly);
+        lly_yearly=findViewById(R.id.lly_yearly);
 
 
         imageView_rep_1.setOnClickListener(new View.OnClickListener() {
@@ -35,7 +38,36 @@ public class ReportActivity extends AppCompatActivity {
         lly_report.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ReportActivity.this,DailyReportActivity.class));
+                Intent intent=new Intent(ReportActivity.this,DailyReportActivity.class);
+                intent.putExtra("key","Daily Report");
+                startActivity(intent);
+            }
+        });
+
+        lly_weekly.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ReportActivity.this,DailyReportActivity.class);
+                intent.putExtra("key","Weekly Report");
+                startActivity(intent);
+            }
+        });
+
+        lly_monthly.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ReportActivity.this,DailyReportActivity.class);
+                intent.putExtra("key","Monthly Report");
+                startActivity(intent);
+            }
+        });
+
+        lly_yearly.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ReportActivity.this,DailyReportActivity.class);
+                intent.putExtra("key","Yearly Report");
+                startActivity(intent);
             }
         });
 

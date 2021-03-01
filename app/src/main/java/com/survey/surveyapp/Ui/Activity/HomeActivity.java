@@ -145,7 +145,7 @@ public class HomeActivity extends  BaseActivity  implements View.OnClickListener
             startActivity(new Intent(HomeActivity.this,Notifications.class));
             activeTab(tv_notifications_nav,tv_survey,tv_daily_report_nav,tv_home,tv_setting);
         }else if (id==R.id.tv_setting_nav){
-            startActivity(new Intent(HomeActivity.this,Notifications.class));
+            startActivity(new Intent(HomeActivity.this,SettingActivity.class));
             activeTab(tv_setting,tv_notifications_nav,tv_survey,tv_daily_report_nav,tv_home);
         }else if (id==R.id.img_profile){
             startActivity(new Intent(HomeActivity.this,ProfileActivity.class));

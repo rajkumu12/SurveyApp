@@ -79,10 +79,6 @@ public class IdDetailActivity extends AppCompatActivity {
                 .placeholder(R.drawable.ic_user)
                 .into(image_profile);
 
-
-
-
-
         imag4e_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
