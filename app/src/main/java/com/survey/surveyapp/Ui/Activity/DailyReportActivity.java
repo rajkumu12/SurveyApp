@@ -5,9 +5,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.survey.surveyapp.Adapters.DailyReportAdapter;
 import com.survey.surveyapp.Models.DailyReportModel;
@@ -21,6 +23,7 @@ public class DailyReportActivity extends AppCompatActivity {
     private List<DailyReportModel> arrayList;
     RecyclerView dailyreport_list;
     ImageView imageView_back1_rep_daily;
+    TextView id_header;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,20 @@ public class DailyReportActivity extends AppCompatActivity {
         dailyreport_list=findViewById(R.id.rec_report);
         imageView_back1_rep_daily=findViewById(R.id.back1_rep_daily);
 
+        id_header=findViewById(R.id.tv_header);
+
+        Intent intent=getIntent();
+        String key=intent.getStringExtra("key");
+
+        if (key.equals("Daily Report")){
+            id_header.setText(key);
+        }else if (key.equals("Weekly Report")){
+            id_header.setText(key);
+        }else if (key.equals("Monthly Report")){
+            id_header.setText(key);
+        }else if (key.equals("Yearly Report")){
+            id_header.setText(key);
+        }
 
 
         imageView_back1_rep_daily.setOnClickListener(new View.OnClickListener() {
