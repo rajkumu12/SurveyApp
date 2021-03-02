@@ -9,14 +9,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.survey.surveyapp.Delegates.ReportsDelegeates;
+import com.survey.surveyapp.Models.BaseModel;
+import com.survey.surveyapp.Models.ReportsModel;
 import com.survey.surveyapp.R;
 
-public class ReportActivity extends AppCompatActivity {
+public class ReportActivity extends BaseActivity {
 
     ImageView imageView_rep_1;
     LinearLayout lly_report,lly_weekly,lly_monthly,lly_yearly;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_report);
@@ -72,4 +75,6 @@ public class ReportActivity extends AppCompatActivity {
         });
 
     }
+
+
 }

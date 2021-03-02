@@ -40,7 +40,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SurveyApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Ui.Activity.SettingActivity"></activity>
+        <activity android:name=".Ui.Activity.ReportsFormActivity"></activity>
+        <activity android:name=".Ui.Activity.SettingActivity" />
 
         <meta-data
             android:name="com.google.android.actions"

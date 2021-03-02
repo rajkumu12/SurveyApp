@@ -5,7 +5,6 @@ public class WSContants {
 	public static final String BASE_MAIN_URL_ANDROID_API = BASE_MAIN_URL_ANDROID + "api/";
 	public static final String REGISTER_LOGIN = "login";
 	public static final String NOTIFICATION_POST = "addNotification";
-	public static final String NOTIFICATION_GET = "getNotification";
 	public static final String SUBJECT = "subject";
 	public static final String MESSAGE = "message";
 	public static final String UPDATE_USER = "profile";
@@ -40,4 +39,10 @@ public class WSContants {
 
     public static final String GETID ="getIdCard" ;
     public static final String GETNOTIFICATION ="getNotification" ;
+
+
+    public static final String REPORTS ="getReports" ;
+
+
+
 }

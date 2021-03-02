@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginViewModel extends BaseViewModel{
+public class LoginViewModel extends BaseViewModel {
     String TAG = "LoginViewModel";
 
 //    ArticleRepository articleRepository;
@@ -47,10 +47,7 @@ public class LoginViewModel extends BaseViewModel{
     }
 
 
-
-    public void login(String email,String password, String deviceToken){
-
-
+    public void login(String email, String password, String deviceToken) {
 
 
         startProgressDialog();
@@ -80,41 +77,11 @@ public class LoginViewModel extends BaseViewModel{
         });
 
 
-
-//        call = apiInterface.login("mobile1", "mobile1");
-//        call.enqueue(new Callback<ResponseBody>() {
-//            @Override
-//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//                stopProgressDialog();
-//                String responseCode = "";
-//                try {
-//                    if(response.body() != null) {
-//                        responseCode = response.body().string();
-//                        Log.e(TAG, "responseCode token: " + responseCode);
-//                        ((LoginDelegate) cb).onSucess(responseCode);
-//                    }else{
-//                        ((LoginDelegate) cb).onError("Something went wrong!");
-//                    }
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                    ((LoginDelegate) cb).onError(""+e.getMessage());
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseBody> call, Throwable t) {
-//                stopProgressDialog();
-//            }
-//        });
-
-
     }
 
 
-    public void CreateId(String user_id, String fname, String lname, String email, String password, String confirm_password, String dob,String gender,
-                         String designation,String address,String mobile,String profile_pic){
-
-        Log.d("chekssss","here "+user_id+" fn"+fname+" lname"+lname+" "+email+" "+password+" "+confirm_password+" "+dob+" "+gender+" "+designation+" "+address+" "+mobile+" pp"+profile_pic);
+    public void CreateId(String user_id, String fname, String lname, String email, String password, String confirm_password, String dob, String gender,
+                String designation, String address, String mobile, String profile_pic) {
 
         startProgressDialog();
 
@@ -122,13 +89,12 @@ public class LoginViewModel extends BaseViewModel{
 
         arrayListMash.add(MultipartBody.Part.createFormData(WSContants.PROFILE_USER_ID, user_id));
 
-        if(!profile_pic.equalsIgnoreCase("")){
+        if (!profile_pic.equalsIgnoreCase("")) {
             File file = new File(profile_pic);
-            RequestBody requestFile =  RequestBody.create( MediaType.parse("image/*"), file );
+            RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
             MultipartBody.Part body = MultipartBody.Part.createFormData(WSContants.PROFILE_PROFILE_PIC, file.getName(), requestFile);
             arrayListMash.add(body);
         }
-
 
 
         arrayListMash.add(MultipartBody.Part.createFormData(WSContants.FNAME, fname));
@@ -150,7 +116,7 @@ public class LoginViewModel extends BaseViewModel{
             public void onResponse(Call<AddIdCardModel> call, Response<AddIdCardModel> response) {
                 stopProgressDialog();
                 ((CreateIdDelegates) cb).onSucess(response.body());
-                Log.d("hfjlshfsldfhdsjklfhds","hhh"+response.body());
+                Log.d("hfjlshfsldfhdsjklfhds", "hhh" + response.body());
                 Log.e(TAG, "responseCode token: " + response.body().getSuccess());
 //                Log.e(TAG, "responseCode token: " + response.body().getMessage());
 //                Log.e(TAG, "responseCode token: " + response.body().getDataModel().getId());
@@ -160,7 +126,7 @@ public class LoginViewModel extends BaseViewModel{
             public void onFailure(Call<AddIdCardModel> call, Throwable t) {
                 stopProgressDialog();
                 ((CreateIdDelegates) cb).onError(t.getMessage());
-                Log.d("hfjlshfsldfhdsjklfhds","hhh"+t.getLocalizedMessage());
+                Log.d("hfjlshfsldfhdsjklfhds", "hhh" + t.getLocalizedMessage());
                 Log.e(TAG, "onFailure token: " + t.getLocalizedMessage());
             }
         });
@@ -168,24 +134,19 @@ public class LoginViewModel extends BaseViewModel{
     }
 
 
-
-
-
-
-    public void updateUser(String id, String full_name, String profile_pic, String about, String gender, String city, String phone,String designation,String mobile){
+    public void updateUser(String id, String full_name, String profile_pic, String about, String gender, String city, String phone, String designation, String mobile) {
         startProgressDialog();
 
         ArrayList<MultipartBody.Part> arrayListMash = new ArrayList<MultipartBody.Part>();
 
         arrayListMash.add(MultipartBody.Part.createFormData(WSContants.PROFILE_USER_ID, id));
 
-        if(!profile_pic.equalsIgnoreCase("")){
+        if (!profile_pic.equalsIgnoreCase("")) {
             File file = new File(profile_pic);
-            RequestBody requestFile =  RequestBody.create( MediaType.parse("image/*"), file );
+            RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
             MultipartBody.Part body = MultipartBody.Part.createFormData(WSContants.PROFILE_PROFILE_PIC, file.getName(), requestFile);
             arrayListMash.add(body);
         }
-
 
 
         arrayListMash.add(MultipartBody.Part.createFormData(WSContants.FULLNAME, full_name));
@@ -219,15 +180,12 @@ public class LoginViewModel extends BaseViewModel{
     }
 
 
-
-
-
-    public void getDataIdCard(String userid){
+    public void getDataIdCard(String userid) {
 
         ArrayList<MultipartBody.Part> arrayListMash = new ArrayList<MultipartBody.Part>();
         arrayListMash.add(MultipartBody.Part.createFormData(WSContants.PROFILE_USER_ID, userid));
 
-        Log.d("jfklsjfksjfgdskf","ff"+userid);
+        Log.d("jfklsjfksjfgdskf", "ff" + userid);
         callidlist = apiInterface.getIdCard(arrayListMash);
         callidlist.enqueue(new Callback<GetIdCardModel>() {
             @Override
@@ -243,7 +201,7 @@ public class LoginViewModel extends BaseViewModel{
             @Override
             public void onFailure(Call<GetIdCardModel> call, Throwable t) {
                 stopProgressDialog();
-                Log.d("jkfldsjfkldsjfklds","fjdkf"+t.getLocalizedMessage());
+                Log.d("jkfldsjfkldsjfklds", "fjdkf" + t.getLocalizedMessage());
                 // ((HomeFreeCourseDelegate) cb).onErrorFreeCourse(t.getMessage());
                 ((GetIdDelegates) cb).onError(t.getMessage());
             }
@@ -253,19 +211,9 @@ public class LoginViewModel extends BaseViewModel{
     }
 
 
-
-
-
-
-
-
-
-
-
-
     Call<LoginModel> callAA = null;
 
-    public void login2(String mobile, String deviceToken){
+    public void login2(String mobile, String deviceToken) {
 
         startProgressDialog();
 
@@ -278,7 +226,7 @@ public class LoginViewModel extends BaseViewModel{
             @Override
             public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
                 stopProgressDialog();
-               // ((LoginDelegate) cb).onSucess(response.body());
+                // ((LoginDelegate) cb).onSucess(response.body());
 //                Log.e(TAG, "responseCode token: " + response.body().getStatus());
 //                Log.e(TAG, "responseCode token: " + response.body().getMessage());
 //                Log.e(TAG, "responseCode token: " + response.body().getDataModel().getId());
@@ -288,10 +236,9 @@ public class LoginViewModel extends BaseViewModel{
             @Override
             public void onFailure(Call<LoginModel> call, Throwable t) {
                 stopProgressDialog();
-               // ((LoginDelegate) cb).onError(t.getMessage());
+                // ((LoginDelegate) cb).onError(t.getMessage());
             }
         });
-
 
 
 //        call = apiInterface.login("mobile1", "mobile1");
@@ -322,9 +269,6 @@ public class LoginViewModel extends BaseViewModel{
 
 
     }
-
-
-
 
 
 }

@@ -7,6 +7,7 @@ import com.survey.surveyapp.Models.GetIdCardModel;
 import com.survey.surveyapp.Models.GetNotificationsModel;
 import com.survey.surveyapp.Models.LoginModel;
 import com.survey.surveyapp.Models.NotificationModels;
+import com.survey.surveyapp.Models.ReportsModel;
 
 import java.util.ArrayList;
 
@@ -78,6 +79,13 @@ public interface APIInterface {
             @Part ArrayList<MultipartBody.Part> arrayListMash
     );
 
+
+    @Multipart
+    @POST(WSContants.REPORTS)
+    Call<ReportsModel>  getReportd(
+            //@Part("category_id") RequestBody category_id
+            @Part ArrayList<MultipartBody.Part> arrayListMash
+    );
 
 
   /*  @GET(WSContants.CATEGORIES)

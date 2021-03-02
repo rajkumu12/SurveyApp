@@ -3,10 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="65dp"
     android:layout_marginTop="@dimen/dp12"
+    android:id="@+id/rly"
     android:background="@drawable/dailyreportbg"
     android:layout_marginHorizontal="@dimen/dp12">
 
     <TextView
+        android:id="@+id/tv_report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -16,7 +18,7 @@
         android:layout_marginLeft="@dimen/dp20"
         android:text="Report No. 1"/>
 
-    <TextView
+    <!--<TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -25,5 +27,5 @@
         android:textSize="@dimen/sp8"
         android:layout_marginRight="@dimen/dp12"
         android:layout_alignParentRight="true"
-        android:text="21 mar, 2020"/>
+        android:text="21 mar, 2020"/>-->
 </RelativeLayout>

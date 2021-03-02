@@ -47,47 +47,16 @@ public class ViewIdCardActivity extends BaseActivity implements GetIdDelegates {
 
 
         viewModal = new LoginViewModel(this, this);
-        viewModal.getDataIdCard(appDatabase.userDao().getLoginUser().getUid());
+
         Log.d("lkjlfkdjflkdjfkld","jkjk"+appDatabase.userDao().getLoginUser().getUid());
         /*loaddata();*/
     }
 
-   /* @Override
-    protected void onPostResume() {
-        super.onPostResume();
-
-    }*/
-
-   /* private void loaddata() {
-
-
-        arrayList = new ArrayList<>();
-        arrayList.add(new ViewIdModels("khfsdajdshk"));
-        arrayList.add(new ViewIdModels("khfsdajdshk"));
-        arrayList.add(new ViewIdModels("khfsdajdshk"));
-        arrayList.add(new ViewIdModels("khfsdajdshk"));
-        arrayList.add(new ViewIdModels("khfsdajdshk"));
-        arrayList.add(new ViewIdModels("khfsdajdshk"));
-        arrayList.add(new ViewIdModels("khfsdajdshk"));
-        arrayList.add(new ViewIdModels("khfsdajdshk"));
-        arrayList.add(new ViewIdModels("khfsdajdshk"));
-        arrayList.add(new ViewIdModels("khfsdajdshk"));
-        arrayList.add(new ViewIdModels("khfsdajdshk"));
-        arrayList.add(new ViewIdModels("khfsdajdshk"));
-        arrayList.add(new ViewIdModels("khfsdajdshk"));
-        arrayList.add(new ViewIdModels("khfsdajdshk"));
-        arrayList.add(new ViewIdModels("khfsdajdshk"));
-
-        ViewIdAdapter topPicksAdapter = new ViewIdAdapter(ViewIdCardActivity.this, arrayList);
-        LinearLayoutManager layoutManager2 = new LinearLayoutManager(ViewIdCardActivity.this);
-        recy_view_id.setLayoutManager(layoutManager2);
-                            *//*  int spacingInPixels = Objects.requireNonNull(getContext()).getResources().getDimensionPixelSize(R.dimen.spacing);
-                                recyclerView.addItemDecoration(new SpacesItemDecoration(spacingInPixels));*//*
-        recy_view_id.setItemAnimator(new DefaultItemAnimator());
-        recy_view_id.setAdapter(topPicksAdapter);
-
-
-    }*/
+    @Override
+    protected void onResume() {
+        super.onResume();
+        viewModal.getDataIdCard(appDatabase.userDao().getLoginUser().getUid());
+    }
 
     @Override
     public void onSucess(GetIdCardModel loginModel) {
