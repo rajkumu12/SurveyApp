@@ -26,8 +26,9 @@ public class HomeActivity extends  BaseActivity  implements View.OnClickListener
     FullDrawerLayout drawerLayout;
     CircleImageView img_profile;
     ImageView imageView_hamburgericon,close_drawer;
-    TextView tv_home,tv_daily_report_nav,tv_survey,tv_notifications_nav,tv_setting,tv_name_nav,tv_designation;
+    TextView tv_home,tv_daily_report_nav,tv_survey,tv_notifications_nav,tv_setting,tv_name_nav,tv_designation,tv_logout_nav;
     TextView tv_name_head;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +47,7 @@ public class HomeActivity extends  BaseActivity  implements View.OnClickListener
         tv_name_head =findViewById(R.id.tv_name_head);
         tv_name_nav =findViewById(R.id.name);
         tv_designation =findViewById(R.id.tv_designation);
+        tv_logout_nav=findViewById(R.id.tv_logOut_nav);
 
 
 
@@ -57,6 +59,7 @@ public class HomeActivity extends  BaseActivity  implements View.OnClickListener
         tv_notifications_nav.setOnClickListener(this);
         tv_setting.setOnClickListener(this);
         img_profile.setOnClickListener(this);
+        tv_logout_nav.setOnClickListener(this);
 
         loadFragment(new HomeFragments());
 
@@ -149,6 +152,10 @@ public class HomeActivity extends  BaseActivity  implements View.OnClickListener
             activeTab(tv_setting,tv_notifications_nav,tv_survey,tv_daily_report_nav,tv_home);
         }else if (id==R.id.img_profile){
             startActivity(new Intent(HomeActivity.this,ProfileActivity.class));
+        }else if (id==R.id.tv_logOut_nav){
+            appDatabase.clearAllTables();
+            startActivity(new Intent(this,Login.class));
+            finish();
         }
     }
 }

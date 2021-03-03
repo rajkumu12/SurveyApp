@@ -52,12 +52,6 @@ public class Login extends BaseActivity implements View.OnClickListener, LoginDe
                     }
                 });
 
-
-
-
-
-
-
         getViews();
         tv_login.setOnClickListener(this);
     }
@@ -110,7 +104,7 @@ public class Login extends BaseActivity implements View.OnClickListener, LoginDe
             finishAffinity();
             finish();
         }else {
-            Log.d("hfjsdhfjdsfjdsf","log1"+loginModel.getMessage());
+            new ShowMsg().createToast(this , "Login Failed:Email or password is wrong");
         }
 
 

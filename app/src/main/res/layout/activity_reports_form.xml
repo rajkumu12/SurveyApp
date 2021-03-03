@@ -8,11 +8,37 @@
     android:background="@drawable/loginbg"
     tools:context=".Ui.Activity.ReportsFormActivity">
 
+    <RelativeLayout
+        android:id="@+id/rly_topactionbar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="32dp">
+
+        <ImageView
+            android:id="@+id/back1_rep_form"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/backbtn" />
+        <TextView
+            android:id="@+id/tv_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp21"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="Survey Forms"/>
+
+    </RelativeLayout>
+
 
     <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/dp24"
+        android:layout_below="@+id/rly_topactionbar1"
         android:paddingTop="@dimen/dp12"
         android:id="@+id/webView"/>
 

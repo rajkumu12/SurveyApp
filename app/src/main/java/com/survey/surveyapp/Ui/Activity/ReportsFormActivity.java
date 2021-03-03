@@ -19,6 +19,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.fevziomurtekin.customprogress.Dialog;
@@ -29,6 +30,7 @@ public class ReportsFormActivity extends AppCompatActivity {
 
     Dialog dialog;
     WebView webView;
+    ImageView image_view_back;
     public ValueCallback<Uri[]> uploadMessage;
     private ValueCallback<Uri> mUploadMessage;
     public static final int REQUEST_SELECT_FILE = 100;
@@ -43,6 +45,7 @@ public class ReportsFormActivity extends AppCompatActivity {
 
         dialog=findViewById(R.id.progress);
         webView=findViewById(R.id.webView);
+        image_view_back=findViewById(R.id.back1_rep_form);
 
         Intent intent=getIntent();
         form_url=intent.getStringExtra("url");
@@ -52,6 +55,16 @@ public class ReportsFormActivity extends AppCompatActivity {
         dialog.setdurationTime(100);
 
         checkInternetConnection();
+
+
+
+
+        image_view_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
     public void checkInternetConnection() {
         ConnectivityManager conMgr = (ConnectivityManager)this.getSystemService(getApplicationContext().CONNECTIVITY_SERVICE);
@@ -150,16 +163,12 @@ public class ReportsFormActivity extends AppCompatActivity {
 
         public MyWebChromeClient() {
         }
-
         public Bitmap getDefaultVideoPoster() {
             if (mCustomView == null) {
                 return null;
             }
             return BitmapFactory.decodeResource(getApplicationContext().getResources(), 2130837573);
         }
-
-
-
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
             super.onProgressChanged(view, newProgress);

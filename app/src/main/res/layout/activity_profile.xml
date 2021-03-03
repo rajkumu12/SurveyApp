@@ -13,11 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp">
+        android:layout_marginTop="32dp">
         <ImageView
             android:id="@+id/back1_rep_profile"
-            android:layout_width="21dp"
-            android:layout_height="16dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_centerVertical="true"
             android:src="@drawable/backbtn" />
         <TextView
@@ -31,9 +31,8 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="170dp"
+        android:layout_width="155dp"
         android:layout_height="140dp"
-
         android:layout_marginTop="@dimen/dp30"
         android:layout_gravity="center_horizontal">
         <de.hdodenhof.circleimageview.CircleImageView
@@ -48,9 +47,12 @@
             android:layout_width="@dimen/dp36"
             android:layout_height="@dimen/dp36"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_baseline_mode_edit_24"
-            app:tint="@color/white" />
+            android:background="#5C000000"
+            android:padding="@dimen/dp2"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp24"
+            android:src="@drawable/ic_baseline_photo_camera_24"
+            />
     </RelativeLayout>
 
 

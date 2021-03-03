@@ -19,16 +19,9 @@ public class SettingActivity extends BaseActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_setting);
 
-        tv_logout=findViewById(R.id.logout);
 
-        tv_logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                appDatabase.clearAllTables();
-                startActivity(new Intent(SettingActivity.this,Login.class));
-                finish();
-            }
-        });
+
+
 
 
     }

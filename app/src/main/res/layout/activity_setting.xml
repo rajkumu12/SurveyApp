@@ -10,12 +10,4 @@
     tools:context=".Ui.Activity.Notifications">
 
 
-    <TextView
-        android:id="@+id/logout"
-        android:textColor="@color/white"
-        android:textSize="@dimen/sp16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LogOut"/>
-
 </LinearLayout>

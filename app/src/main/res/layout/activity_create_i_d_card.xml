@@ -17,12 +17,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp">
+        android:layout_marginTop="32dp">
         <ImageView
             android:id="@+id/back"
-            android:layout_width="21dp"
-            android:layout_height="16dp"
-            android:layout_marginTop="@dimen/dp8"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="@dimen/dp4"
             android:src="@drawable/backbtn" />
         <LinearLayout
             android:layout_width="wrap_content"
@@ -79,7 +79,7 @@
                 <EditText
                     android:id="@+id/et_name1"
                     android:layout_width="0dp"
-                    android:paddingLeft="@dimen/dp4"
+                    android:paddingLeft="@dimen/dp8"
                     android:layout_height="match_parent"
                     android:background="@drawable/et_bg"
                     android:textColor="@color/textcolor"
@@ -94,7 +94,7 @@
                     android:background="@drawable/et_bg"
                     android:textColor="@color/textcolor"
                     android:singleLine="true"
-                    android:paddingLeft="@dimen/dp4"
+                    android:paddingLeft="@dimen/dp8"
                     android:inputType="textPersonName|textCapWords"
                     android:fontFamily="@font/quicksand_book"
                     android:layout_marginLeft="@dimen/dp12"
@@ -129,9 +129,9 @@
                     android:background="@drawable/et_bg"
                     android:textColor="@color/textcolor"
                     android:singleLine="true"
-                    android:paddingHorizontal="@dimen/dp4"
+                    android:paddingLeft="@dimen/dp8"
                     android:textColorHint="#80000000"
-                    android:hint="aplha@gmail.com"
+                    android:hint=""
                     android:fontFamily="@font/quicksand_book"
                     android:inputType="textEmailAddress"
                     android:layout_weight="0.5"/>
@@ -166,6 +166,7 @@
                     android:background="@drawable/et_bg"
                     android:textColor="@color/textcolor"
                     android:singleLine="true"
+                    android:paddingLeft="@dimen/dp8"
                     android:textColorHint="#80000000"
                     android:fontFamily="@font/quicksand_book"
                     android:inputType="textPassword"
@@ -201,7 +202,7 @@
                     android:textColor="@color/textcolor"
                     android:singleLine="true"
                     android:textColorHint="#80000000"
-                    android:paddingHorizontal="@dimen/dp4"
+                    android:paddingLeft="@dimen/dp8"
                     android:fontFamily="@font/quicksand_book"
                     android:inputType="textPassword"
                     android:layout_weight="0.5"/>
@@ -253,7 +254,7 @@
                     android:singleLine="true"
                     android:hint="@string/day"
                     android:id="@+id/et_day"
-                    android:paddingLeft="@dimen/dp2"
+                    android:paddingLeft="@dimen/dp8"
                     android:layout_marginLeft="@dimen/dp8"
                     android:textColorHint="#80000000"
                     android:maxLength="2"
@@ -268,7 +269,7 @@
                     android:singleLine="true"
                     android:hint="Year"
                     android:id="@+id/et_year"
-                    android:paddingLeft="@dimen/dp4"
+                    android:paddingLeft="@dimen/dp8"
                     android:layout_marginLeft="@dimen/dp8"
                     android:textColorHint="#80000000"
                     android:maxLength="4"
@@ -340,6 +341,7 @@
                         android:id="@+id/et_id_mobile"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp38"
+                        android:paddingLeft="@dimen/dp8"
                         android:background="@drawable/et_bg"
                         android:fontFamily="@font/quicksand_book"
                         android:layout_marginTop="@dimen/dp8"
@@ -380,6 +382,7 @@
                     android:background="@drawable/et_bg"
                     android:textColor="@color/textcolor"
                     android:singleLine="true"
+                    android:paddingLeft="@dimen/dp8"
                     android:textColorHint="#80000000"
                     android:fontFamily="@font/quicksand_book"
                     android:inputType="text|textCapSentences"
@@ -415,6 +418,8 @@
                     android:background="@null"
                     android:textColor="@color/textcolor"
                     android:singleLine="true"
+                    android:focusable="false"
+                    android:editable="false"
                     android:textColorHint="#80000000"
                     android:fontFamily="@font/quicksand_book"
                     android:inputType="text|textCapSentences"
@@ -456,6 +461,7 @@
                     android:textColor="@color/textcolor"
                     android:singleLine="false"
                     android:textColorHint="#80000000"
+                    android:paddingLeft="@dimen/dp8"
                     android:fontFamily="@font/quicksand_book"
                     android:inputType="text|textCapSentences"
                     android:layout_weight="0.5"/>
@@ -482,9 +488,8 @@
                 android:layout_marginLeft="@dimen/dp8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-sed diam nonummy nibh euismod tincidunt ut laoreet
-dolore magna aliquam erat volutpat."/>
+                android:layout_gravity="center_vertical"
+                android:text="@string/i_have_read_the_terms_conditions_to_use_this_app"/>
         </LinearLayout>
 
         <TextView

@@ -58,15 +58,16 @@ public class IdDetailActivity extends AppCompatActivity {
         dob=intent.getStringExtra("dob");
         gender=intent.getStringExtra("gender");
         mobile=intent.getStringExtra("mobile");
+
         designation=intent.getStringExtra("designation");
         address=intent.getStringExtra("address");
         profile_pic=intent.getStringExtra("profile_pic");
 
         Log.d("zxfdzsfslkjkljkhhhhhh","gfdhfy"+mobile);
 
-
         tv_id.setText("ID -"+id);
         tv_name.setText(fname+" "+lanme);
+        tv_cont.setText(mobile);
         et_cont.setText(mobile);
         tv_add.setText(address);
         tv_email.setText(email);
