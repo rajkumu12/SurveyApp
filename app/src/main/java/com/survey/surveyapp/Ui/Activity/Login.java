@@ -22,13 +22,11 @@ import com.survey.surveyapp.ViewModel.LoginViewModel;
 
 public class Login extends BaseActivity implements View.OnClickListener, LoginDelegates {
 
-    EditText rt_email,et_password;
+    EditText rt_email, et_password;
     TextView tv_login;
+    TextView tv_forgotpassword;
     private LoginViewModel viewModal;
     String devicetoken;
-
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,7 +34,9 @@ public class Login extends BaseActivity implements View.OnClickListener, LoginDe
         getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
 
-        viewModal = new LoginViewModel(this,this);
+        tv_forgotpassword=findViewById(R.id.tv_forgotpassword);
+
+        viewModal = new LoginViewModel(this, this);
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
                     @Override
@@ -47,24 +47,21 @@ public class Login extends BaseActivity implements View.OnClickListener, LoginDe
                         }
                         // Get new Instance ID token
                         devicetoken = task.getResult().getToken();
-                        Log.d("lkdflkfkldf","d"+devicetoken);
+                        Log.d("lkdflkfkldf", "d" + devicetoken);
                         // Log and toast
                     }
                 });
 
         getViews();
         tv_login.setOnClickListener(this);
+        tv_forgotpassword.setOnClickListener(this);
     }
 
     //region findViews
     private void getViews() {
-
-
-
-        rt_email=findViewById(R.id.et_email);
-        et_password=findViewById(R.id.et_password);
-        tv_login=findViewById(R.id.tv_login);
-
+        rt_email = findViewById(R.id.et_email);
+        et_password = findViewById(R.id.et_password);
+        tv_login = findViewById(R.id.tv_login);
     }
     //endregion
 
@@ -72,51 +69,44 @@ public class Login extends BaseActivity implements View.OnClickListener, LoginDe
     //region click
     @Override
     public void onClick(View v) {
-       int id=v.getId();
-       if (id==R.id.tv_login){
-           String email=rt_email.getText().toString().trim();
-           String password=et_password.getText().toString().trim();
-           if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        int id = v.getId();
+        if (id == R.id.tv_login) {
+            String email = rt_email.getText().toString().trim();
+            String password = et_password.getText().toString().trim();
+            if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
 
-               rt_email.setError("Invalid email");
-           }else if (password.isEmpty() ){
-               et_password.setError("Password can't be emapty");
-           }else if (password.length()<8){
-               et_password.setError("Password length should be minimum 8 digit");
-           }else {
-               viewModal.login(email,password,devicetoken);
-           }
-
-       }
-
-
+                rt_email.setError("Invalid email");
+            } else if (password.isEmpty()) {
+                et_password.setError("Password can't be emapty");
+            } else if (password.length() < 8) {
+                et_password.setError("Password length should be minimum 8 digit");
+            } else {
+                viewModal.login(email, password, devicetoken);
+            }
+        }else if (id==R.id.tv_forgotpassword){
+            startActivity(new Intent(Login.this,ForgotPassword.class));
+        }
     }
 
     @Override
     public void onSucess(LoginModel loginModel) {
-        if (loginModel.getSuccess().equals("true")){
-            Log.d("hfjsdhfjdsfjdsf","log"+loginModel.getMessage());
-            Log.d("hfjsdhfjdsfjdsf","lofgfdgfdgg"+loginModel.getResult_push().getEmail());
+        if (loginModel.getSuccess().equals("true")) {
+            Log.d("hfjsdhfjdsfjdsf", "log" + loginModel.getMessage());
+            Log.d("hfjsdhfjdsfjdsf", "lofgfdgfdgg" + loginModel.getResult_push().getEmail());
             appDatabase.userDao().insertAll(loginModel.getResult_push());
-            new ShowMsg().createToast(this , loginModel.getMessage());
+            new ShowMsg().createToast(this, loginModel.getMessage());
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
             finishAffinity();
             finish();
-        }else {
-            new ShowMsg().createToast(this , "Login Failed:Email or password is wrong");
+        } else {
+            new ShowMsg().createToast(this, "Login Failed:Email or password is wrong");
         }
-
-
     }
 
     @Override
     public void onError(String error) {
-        Log.d("hfjsdhfjdsfjdsf","err"+error);
+        Log.d("hfjsdhfjdsfjdsf", "err" + error);
     }
     //endregion
-
-
-
-
 }
